@@ -1,0 +1,74 @@
+﻿@page
+@model PROG7312_POE_PART2.Pages.ViewReportModel
+@{
+    ViewData["Title"] = "View Reports";
+}
+
+<div class="container mt-0">
+    <h2 class="text-center mb-4">Submitted Reports</h2>
+
+    @if (Model.Reports.Count == 0)
+    {
+        <div class="alert alert-info text-center">No reports have been submitted yet.</div>
+    }
+    else
+    {
+        <div class="mt-4">
+            @foreach (var report in Model.Reports)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Report ID: @report.Key</h5>
+                        <p class="card-text"><strong>Location:</strong> @report.Value.Location</p>
+                        <p class="card-text"><strong>Category:</strong> @report.Value.Category</p>
+                        <p class="card-text"><strong>Description:</strong> @report.Value.Description</p>
+                        <p class="card-text">
+                            <strong>Media:</strong>
+                            @if (!string.IsNullOrEmpty(report.Value.MediaFileName))
+                            {
+                                <a href="~/uploads/@report.Value.MediaFileName" target="_blank">View Media</a>
+                            }
+                            else
+                            {
+                                <span>No Media</span>
+                            }
+                        </p>
+                        <p class="card-text"><strong>Submission Date:</strong> @report.Value.SubmissionDate.ToString("dd/MM/yyyy HH:mm")</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: box-shadow 0.2s;
+        background-color: #EFFDDC;
+    }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-text strong {
+            color: #43A405;
+        }
+
+    .alert {
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+</style>

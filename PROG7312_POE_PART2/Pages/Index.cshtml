@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Main Menu";
+}
+
+<div class="container mt-0">
+    <h1 class="text-center mb-4">Main Menu</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <ul class="list-group custom-list">
+                <li class="list-group-item">
+                    <a asp-page="/ReportIssue" class="btn btn-custom btn-primary btn-block">Report Issues</a>
+                </li>
+                <li class="list-group-item">
+                    <a asp-page="/LocalEvents" class="btn btn-custom btn-primary btn-block">Local Events and Announcements</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" class="btn btn-secondary btn-block disabled-link">Service Request Status (Coming Soon)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .custom-list .list-group-item {
+        background-color: #EFFDDC;
+        border: none;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .list-group-item {
+        border: none;
+    }
+
+    .btn-block {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+
+    .disabled-link {
+        pointer-events: none;
+        color: grey;
+        background-color: #e9ecef;
+        border-color: #e9ecef;
+        text-decoration: none;
+    }
+
+        .disabled-link:hover {
+            color: grey;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+        }
+
+    .btn-custom {
+        background-color: #43A405;
+        color: white;
+    }
+
+        .btn-custom:hover {
+            background-color: #368304;
+        }
+</style>
