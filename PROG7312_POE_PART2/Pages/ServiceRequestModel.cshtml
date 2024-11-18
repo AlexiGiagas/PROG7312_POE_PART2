@@ -1,0 +1,82 @@
+﻿@page
+@model PROG7312_POE_PART2.Pages.ServiceRequestModel
+@{
+    ViewData["Title"] = "Service Request Status";
+}
+
+<div class="container mt-0">
+    <h2 class="text-center mb-4">Service Request Status</h2>
+
+    @if (Model.Requests.Count == 0)
+    {
+        <div class="alert alert-info text-center">No service requests available.</div>
+    }
+    else
+    {
+        <div class="mt-4">
+            @foreach (var request in Model.Requests)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@request.Title</h5>
+                        <p class="card-text"><strong>ID:</strong> @request.ID</p>
+                        <p class="card-text">
+                            <strong>Status:</strong>
+                            <span class="badge
+                @(request.Status == "Pending" ? "bg-warning text-dark" :
+                  request.Status == "In Progress" ? "bg-primary" :
+                  "bg-success")">
+                                @request.Status
+                            </span>
+                        </p>
+                        <p class="card-text"><strong>Submission Date:</strong> @request.SubmissionDate.ToString("dd/MM/yyyy")</p>
+                        <p class="card-text"><strong>Location:</strong> @request.Location</p>
+                        <p class="card-text"><strong>Category:</strong> @request.Category</p>
+                        <p class="card-text"><strong>Description:</strong> @request.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: box-shadow 0.2s;
+        background-color: #EFFDDC;
+    }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-text strong {
+        color: #43A405;
+    }
+
+    .alert {
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+
+    .btn-custom {
+        background-color: #43A405;
+        color: white;
+    }
+
+        .btn-custom:hover {
+            background-color: #368304;
+        }
+</style>
